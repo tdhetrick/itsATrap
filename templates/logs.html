@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honeypot Logs</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card mt-5">
+                    <div class="card-header text-center">
+                        <h2>Honeypot Logs</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            {% for entry in log %}
+                            <li class="list-group-item">
+                                <strong>IP:</strong> {{ entry.ip }} |
+                                <strong>User-Agent:</strong> {{ entry.user_agent }} |
+                                <strong>Username:</strong> {{ entry.username }} |
+                                <strong>Password:</strong> {{ entry.password }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
