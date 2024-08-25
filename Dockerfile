@@ -11,7 +11,7 @@ COPY . /app
 RUN pip install -r requirements.txt
 
 # Copy the start script
-COPY start.sh /app/start.sh
+RUN chmod +x /app/start.sh
 
 # Expose the port Flask will run on
 EXPOSE 5000
