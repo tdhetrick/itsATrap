@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define variables
-IMAGE_NAME="honeypot.Dockerfile"
+IMAGE_NAME="honeypot"
 CONTAINER_NAME="HoneyPotContainer"
 LOGS_DIR="$(pwd)/logs"
 
