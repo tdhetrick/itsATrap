@@ -61,4 +61,4 @@ def show_logs():
     return render_template('logs.html', log=log)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
