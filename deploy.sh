@@ -2,7 +2,7 @@
 
 # Define variables
 IMAGE_NAME="honeypot.Dockerfile"
-CONTAINER_NAME="HoneyContainer"
+CONTAINER_NAME="HoneyPotContainer"
 LOGS_DIR="$(pwd)/logs"
 
 # Create logs directory if it doesn't exist
