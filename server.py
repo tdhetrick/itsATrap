@@ -1,9 +1,33 @@
 from flask import Flask, request, render_template, redirect, url_for
+import os, csv
+from datetime import datetime
 
 app = Flask(__name__)
 
 # In-memory log for simplicity. In a real scenario, you might want to log to a file or database.
 log = []
+
+LOG_DIR = "logs"
+
+os.makedirs(LOG_DIR, exist_ok=True)
+
+def write_log(log_data):
+    """Write the log data to a CSV file named after the current date."""
+    # Get the current date to use as the filename
+    current_date = datetime.now().strftime('%Y-%m-%d')
+    log_filename = os.path.join(LOG_DIR, f"{current_date}.csv")
+
+    # Check if the file exists; if not, create it and write the header
+    file_exists = os.path.isfile(log_filename)
+    
+    with open(log_filename, 'a', newline='') as csvfile:
+        fieldnames = log_data.keys()
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        
+        if not file_exists:
+            writer.writeheader()
+        
+        writer.writerow(log_data)
 
 @app.route('/')
 def index():
@@ -23,13 +47,7 @@ def login():
         'username': username,
         'password': password
     }
-    log.append(log_entry)
-
-    # Log the attempt to the console (or log file in a real scenario)
-    print(f"[*] Honeypot hit by {user_ip}")
-    print(f"[*] User-Agent: {user_agent}")
-    print(f"[*] Username: {username}")
-    print(f"[*] Password: {password}")
+    write_log(log_entry)
 
     # Redirect to a fake "Login Failed" page
     return redirect(url_for('login_failed'))
