@@ -18,7 +18,3 @@ EXPOSE 5000
 
 # Run the start script
 ENTRYPOINT ["/app/start.sh"]
-
-
-# docker build -t Honey.Dockerfile .
-# docker run -d -p 5000:5000 Honey.Dockerfile

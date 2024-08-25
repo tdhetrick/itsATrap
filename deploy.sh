@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define variables
-IMAGE_NAME="Honey.Dockerfile"
+IMAGE_NAME="honey.Dockerfile"
 CONTAINER_NAME="HoneyContainer"
 LOGS_DIR="$(pwd)/logs"
 
